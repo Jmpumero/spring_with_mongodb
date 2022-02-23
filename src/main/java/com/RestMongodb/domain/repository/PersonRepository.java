@@ -4,10 +4,11 @@ import java.util.List;
 
 import com.RestMongodb.domain.Person;
 import org.springframework.data.mongodb.repository.Aggregation;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
 import org.springframework.stereotype.Repository;
 
 //@RepositoryRestResource(collectionResourceRel = "people", path = "people")
@@ -36,4 +37,9 @@ public interface PersonRepository extends MongoRepository<Person, String> {
     })
     List<Person> findRegexFirstNameAux(String query);
 
+    Person deleteById();
+
+    List<Person> findByFirstNameStartingWith(String regexp);
+//    Query query = new Query();
+//    query.addCriteria(Criteria.where("age").lt(50).gt(20));
 }
