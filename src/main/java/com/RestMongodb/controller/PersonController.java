@@ -1,6 +1,7 @@
 package com.RestMongodb.controller;
 
 import com.RestMongodb.domain.Person;
+import com.RestMongodb.domain.PersonResponse;
 import com.RestMongodb.service.PeopleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,13 +33,15 @@ public class PersonController {
         return peopleService.regexPerson(query);
     }
 
+    @GetMapping("/findByName")
+    public List<PersonResponse> findName(@RequestParam String query){
+        return peopleService.findByFirstName(query);
+    }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Person> updatePerson(@PathVariable String id, @RequestBody Person data){
         return peopleService.updatePerson(id, data);
     }
-
-
 
     @DeleteMapping("/delete_by/{id}")
     public ResponseEntity<HttpStatus> deleteById(@PathVariable String id){
@@ -56,14 +59,12 @@ public class PersonController {
     public ResponseEntity<HttpStatus> deleteMany(@RequestBody List<String> ids){
 
         try {
-
             peopleService.deleteManySimple(ids);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
 
 }

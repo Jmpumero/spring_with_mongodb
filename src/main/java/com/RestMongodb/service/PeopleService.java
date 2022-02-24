@@ -1,6 +1,7 @@
 package com.RestMongodb.service;
 
 import com.RestMongodb.domain.Person;
+import com.RestMongodb.domain.PersonResponse;
 import com.RestMongodb.domain.repository.PersonRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +15,21 @@ public class PeopleService {
 
     PersonRepository personRepository;
 
+
+
     public PeopleService(PersonRepository personRepository) {
         this.personRepository = personRepository;
+    }
+
+    public  List<PersonResponse> findByFirstName(String query){
+        return personRepository.findByFirstName(query);
     }
 
     public Person savePeople(Person person){
         return personRepository.save(person);
 
     }
+
 
     public List<Person> regexPerson(String query){
 
