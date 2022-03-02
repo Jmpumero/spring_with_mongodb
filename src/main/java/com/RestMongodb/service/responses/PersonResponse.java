@@ -1,4 +1,4 @@
-package com.RestMongodb.domain;
+package com.RestMongodb.service.responses;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.io.Serializable;
 
 public class PersonResponse implements Serializable {
-    @Id
+    @Id //no hace falta pero por buenas practica
     @Field
     private String id;
     @Field("firstName")

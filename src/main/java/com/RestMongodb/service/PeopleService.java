@@ -1,8 +1,8 @@
 package com.RestMongodb.service;
 
 import com.RestMongodb.domain.Person;
-import com.RestMongodb.domain.PersonResponse;
-import com.RestMongodb.domain.repository.PersonRepository;
+import com.RestMongodb.repository.PersonRepository;
+import com.RestMongodb.service.responses.PersonResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
